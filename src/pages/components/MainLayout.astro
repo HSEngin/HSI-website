@@ -1,0 +1,363 @@
+---
+// MainLayout.astro
+// This is the main layout template that wraps all pages
+
+// Define the props interface
+interface Props {
+  title: string;
+  description?: string;
+}
+
+// Get the props with destructuring
+const { 
+  title, 
+  description = "Harley & Son specializes in turnkey mechanical parts and assemblies for the aerospace, medical device, semiconductor, and electronics industries with AS 9100 quality system." 
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+    
+    <!-- Preload critical fonts -->
+    <link 
+      rel="preload" 
+      href="/fonts/inter-var.woff2" 
+      as="font" 
+      type="font/woff2" 
+      crossorigin 
+    />
+    
+    <!-- SEO Meta Tags -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://harleyandson.com" />
+    <meta property="og:image" content="https://harleyandson.com/og-image.jpg" />
+  </head>
+  <body class="font-sans text-gray-800 antialiased">
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="flex justify-between items-center py-4">
+          <!-- Logo -->
+          <div class="flex-shrink-0">
+            <a href="/" class="flex items-center">
+              <img 
+                src="/images/harley-and-son-logo.svg" 
+                alt="Harley & Son Logo" 
+                class="h-10 w-auto" 
+              />
+            </a>
+          </div>
+          
+          <!-- Navigation - Desktop -->
+          <nav class="hidden md:flex space-x-8">
+            <a href="/" class="text-gray-700 hover:text-blue-600 px-2 py-1 text-sm font-medium">
+              Home
+            </a>
+            
+            <!-- Services Dropdown -->
+            <div class="relative group">
+              <button class="text-gray-700 hover:text-blue-600 px-2 py-1 text-sm font-medium inline-flex items-center">
+                Services
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-150 ease-in-out z-10">
+                <div class="py-1" role="menu" aria-orientation="vertical">
+                  <a href="/services/machining" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Precision Machining</a>
+                  <a href="/services/sheet-metal" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Sheet Metal Fabrication</a>
+                  <a href="/services/3d-printing" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">3D Printing</a>
+                  <a href="/services/assembly" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Assembly Services</a>
+                  <a href="/services/finishing" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Finishing & Processing</a>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Industries Dropdown -->
+            <div class="relative group">
+              <button class="text-gray-700 hover:text-blue-600 px-2 py-1 text-sm font-medium inline-flex items-center">
+                Industries
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-150 ease-in-out z-10">
+                <div class="py-1" role="menu" aria-orientation="vertical">
+                  <a href="/industries/aerospace" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Aerospace</a>
+                  <a href="/industries/medical" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Medical Devices</a>
+                  <a href="/industries/semiconductor" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Semiconductor</a>
+                  <a href="/industries/electronics" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Electronics</a>
+                </div>
+              </div>
+            </div>
+            
+            <a href="/quality" class="text-gray-700 hover:text-blue-600 px-2 py-1 text-sm font-medium">
+              Quality
+            </a>
+            <a href="/about" class="text-gray-700 hover:text-blue-600 px-2 py-1 text-sm font-medium">
+              About Us
+            </a>
+            <a href="/contact" class="text-gray-700 hover:text-blue-600 px-2 py-1 text-sm font-medium">
+              Contact
+            </a>
+          </nav>
+          
+          <!-- CTA Button -->
+          <div class="hidden md:block">
+            <a 
+              href="/contact" 
+              class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition duration-300"
+            >
+              Request a Quote
+            </a>
+          </div>
+          
+          <!-- Mobile menu button -->
+          <div class="md:hidden">
+            <button 
+              type="button" 
+              class="text-gray-700 hover:text-blue-600" 
+              aria-controls="mobile-menu" 
+              aria-expanded="false" 
+              id="mobile-menu-button"
+            >
+              <span class="sr-only">Open main menu</span>
+              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Mobile menu, shown/hidden based on menu state. -->
+      <div class="md:hidden hidden" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1">
+          <a href="/" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">
+            Home
+          </a>
+          
+          <!-- Mobile Services Menu -->
+          <div class="relative">
+            <button 
+              class="w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100 flex justify-between items-center mobile-dropdown-toggle"
+              aria-expanded="false"
+              aria-controls="mobile-services-menu"
+            >
+              Services
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div class="hidden pl-4" id="mobile-services-menu">
+              <a href="/services/machining" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">
+                Precision Machining
+              </a>
+              <a href="/services/sheet-metal" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">
+                Sheet Metal Fabrication
+              </a>
+              <a href="/services/3d-printing" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">
+                3D Printing
+              </a>
+              <a href="/services/assembly" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">
+                Assembly Services
+              </a>
+              <a href="/services/finishing" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">
+                Finishing & Processing
+              </a>
+            </div>
+          </div>
+          
+          <!-- Mobile Industries Menu -->
+          <div class="relative">
+            <button 
+              class="w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100 flex justify-between items-center mobile-dropdown-toggle"
+              aria-expanded="false"
+              aria-controls="mobile-industries-menu"
+            >
+              Industries
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div class="hidden pl-4" id="mobile-industries-menu">
+              <a href="/industries/aerospace" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">
+                Aerospace
+              </a>
+              <a href="/industries/medical" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">
+                Medical Devices
+              </a>
+              <a href="/industries/semiconductor" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">
+                Semiconductor
+              </a>
+              <a href="/industries/electronics" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">
+                Electronics
+              </a>
+            </div>
+          </div>
+          
+          <a href="/quality" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">
+            Quality
+          </a>
+          <a href="/about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">
+            About Us
+          </a>
+          <a href="/contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">
+            Contact
+          </a>
+          
+          <!-- Mobile CTA -->
+          <div class="mt-4 px-3">
+            <a 
+              href="/contact" 
+              class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition duration-300"
+            >
+              Request a Quote
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+    
+    <main>
+      <slot />
+    </main>
+    
+    <footer class="bg-gray-900 text-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <!-- Company Info -->
+          <div class="col-span-1 md:col-span-1">
+            <img 
+              src="/images/harley-and-son-logo-white.svg" 
+              alt="Harley & Son Logo" 
+              class="h-10 w-auto mb-4" 
+            />
+            <p class="text-gray-400 mt-2">
+              For over forty years, Harley & Son has been a key supplier of precision parts and subassemblies.
+            </p>
+            <div class="mt-4 flex space-x-4">
+              <a href="#" class="text-gray-400 hover:text-white">
+                <span class="sr-only">LinkedIn</span>
+                <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+          
+          <!-- Services -->
+          <div>
+            <h3 class="text-lg font-medium mb-4">Services</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="/services/machining" class="text-gray-400 hover:text-white">Precision Machining</a>
+              </li>
+              <li>
+                <a href="/services/sheet-metal" class="text-gray-400 hover:text-white">Sheet Metal Fabrication</a>
+              </li>
+              <li>
+                <a href="/services/3d-printing" class="text-gray-400 hover:text-white">3D Printing</a>
+              </li>
+              <li>
+                <a href="/services/assembly" class="text-gray-400 hover:text-white">Assembly Services</a>
+              </li>
+              <li>
+                <a href="/services/finishing" class="text-gray-400 hover:text-white">Finishing & Processing</a>
+              </li>
+            </ul>
+          </div>
+          
+          <!-- Industries -->
+          <div>
+            <h3 class="text-lg font-medium mb-4">Industries</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="/industries/aerospace" class="text-gray-400 hover:text-white">Aerospace</a>
+              </li>
+              <li>
+                <a href="/industries/medical" class="text-gray-400 hover:text-white">Medical Devices</a>
+              </li>
+              <li>
+                <a href="/industries/semiconductor" class="text-gray-400 hover:text-white">Semiconductor</a>
+              </li>
+              <li>
+                <a href="/industries/electronics" class="text-gray-400 hover:text-white">Electronics</a>
+              </li>
+            </ul>
+          </div>
+          
+          <!-- Contact Info -->
+          <div>
+            <h3 class="text-lg font-medium mb-4">Contact Us</h3>
+            <ul class="space-y-2 text-gray-400">
+              <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 mt-0.5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                <span>1234 Manufacturing Way<br>Costa Mesa, CA 92626</span>
+              </li>
+              <li class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                <span>(714) 555-1234</span>
+              </li>
+              <li class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                <a href="mailto:info@harleyandson.com" class="hover:text-white">info@harleyandson.com</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="mt-12 pt-8 border-t border-gray-800 text-gray-400 text-sm flex flex-col md:flex-row justify-between items-center">
+          <p>&copy; {new Date().getFullYear()} Harley & Son. All rights reserved.</p>
+          <div class="mt-4 md:mt-0 flex space-x-6">
+            <a href="/privacy-policy" class="hover:text-white">Privacy Policy</a>
+            <a href="/terms-of-service" class="hover:text-white">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+    <!-- Client-side JavaScript - minimal since we're using Astro -->
+    <script>
+      // Mobile menu toggle
+      document.getElementById('mobile-menu-button')?.addEventListener('click', function() {
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenu?.classList.contains('hidden')) {
+          mobileMenu.classList.remove('hidden');
+        } else {
+          mobileMenu?.classList.add('hidden');
+        }
+      });
+      
+      // Mobile dropdown toggles
+      document.querySelectorAll('.mobile-dropdown-toggle').forEach(button => {
+        button.addEventListener('click', function() {
+          const targetId = this.getAttribute('aria-controls');
+          const targetMenu = document.getElementById(targetId);
+          
+          if (targetMenu?.classList.contains('hidden')) {
+            targetMenu.classList.remove('hidden');
+            this.setAttribute('aria-expanded', 'true');
+          } else {
+            targetMenu?.classList.add('hidden');
+            this.setAttribute('aria-expanded', 'false');
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
