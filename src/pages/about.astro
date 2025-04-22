@@ -1,125 +1,34 @@
 ---
-// about.astro
-// About Us page for Harley & Son
+// About page for Harley & Son
 import MainLayout from '../layouts/MainLayout.astro';
 import CTASection from '../components/CTASection.astro';
-
-// Page-specific metadata
-const pageTitle = "About Harley & Son | Precision Manufacturing Excellence";
-const pageDescription = "For over forty years, Harley & Son has been a key supplier of precision parts and subassemblies to the Aerospace, Medical Device, and Semiconductor Electronics Industries.";
-
-// Company milestones data
-const milestones = [
-  {
-    year: "1983",
-    title: "Company Founded",
-    description: "Harley & Son was founded with a focus on providing precision machined parts to local manufacturers."
-  },
-  {
-    year: "1995",
-    title: "Expansion into Aerospace",
-    description: "Added aerospace manufacturing capabilities and obtained first industry certifications."
-  },
-  {
-    year: "2001",
-    title: "Medical Device Manufacturing",
-    description: "Expanded into the medical device industry, implementing cleanroom protocols."
-  },
-  {
-    year: "2008",
-    title: "AS9100 Certification",
-    description: "Achieved AS9100 certification for aerospace quality management."
-  },
-  {
-    year: "2015",
-    title: "Facility Expansion",
-    description: "Doubled manufacturing space and added advanced CNC machining centers."
-  },
-  {
-    year: "2020",
-    title: "NADCAP Certification",
-    description: "Obtained NADCAP certification for special processes."
-  }
-];
-
-// Team members
-const leadershipTeam = [
-  {
-    name: "Robert Harley",
-    title: "President & CEO",
-    bio: "With over 30 years of experience in precision manufacturing, Robert leads the company's strategic vision and growth initiatives.",
-    image: "/images/team/robert-harley.jpg"
-  },
-  {
-    name: "Michael Harley",
-    title: "Chief Operations Officer",
-    bio: "Michael oversees all manufacturing operations, ensuring quality, efficiency, and continuous improvement throughout the production process.",
-    image: "/images/team/michael-harley.jpg"
-  },
-  {
-    name: "Jennifer Chen",
-    title: "Director of Engineering",
-    bio: "Jennifer brings extensive expertise in manufacturing engineering, optimizing processes and implementing advanced manufacturing technologies.",
-    image: "/images/team/jennifer-chen.jpg"
-  },
-  {
-    name: "David Rodriguez",
-    title: "Quality Assurance Manager",
-    bio: "David ensures compliance with all quality standards and manages the company's AS9100D and ISO 9001:2015 quality management systems.",
-    image: "/images/team/david-rodriguez.jpg"
-  }
-];
-
-// Core values
-const coreValues = [
-  {
-    title: "Precision Excellence",
-    description: "We are committed to the highest standards of precision and quality in everything we produce.",
-    icon: "precision-icon.svg"
-  },
-  {
-    title: "Customer Focus",
-    description: "We prioritize understanding and meeting our customers' exact requirements and expectations.",
-    icon: "customer-icon.svg"
-  },
-  {
-    title: "Technical Innovation",
-    description: "We continuously invest in advanced technologies and processes to improve our manufacturing capabilities.",
-    icon: "innovation-icon.svg"
-  },
-  {
-    title: "Integrity",
-    description: "We conduct business with honesty, transparency, and ethical practices in all relationships.",
-    icon: "integrity-icon.svg"
-  }
-];
 ---
 
-<MainLayout title={pageTitle} description={pageDescription}>
+<MainLayout title="About Harley & Son | Precision Manufacturing Excellence" description="For over forty years, Harley & Son has been a key supplier of precision parts and subassemblies to the Aerospace, Medical Device, and Semiconductor Electronics Industries.">
   <!-- Page Header -->
   <div class="bg-blue-700 text-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16 md:py-20">
       <div class="max-w-3xl">
         <h1 class="text-3xl md:text-4xl font-bold mb-4">About Harley & Son</h1>
         <p class="text-xl text-blue-100">
-          For over forty years, we've been delivering precision manufacturing excellence for the industries that demand perfection.
+          A legacy of precision manufacturing excellence spanning four decades.
         </p>
       </div>
     </div>
   </div>
   
-  <!-- Company Overview Section -->
+  <!-- Company Overview -->
   <section class="py-16 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div>
-          <h2 class="text-2xl font-bold text-gray-900 mb-6">Our Company</h2>
+          <h2 class="text-3xl font-bold text-gray-900 mb-6">Our Story</h2>
           <div class="prose prose-blue max-w-none">
             <p>
-              Harley & Son was established in 1983 with a simple mission: to deliver precision-manufactured components with exceptional quality and reliability. What began as a small machine shop has grown into a comprehensive manufacturing partner serving the aerospace, medical device, and semiconductor industries.
+              Harley & Son was founded in 1983 with a simple mission: to deliver precision-manufactured components with exceptional quality and reliability. What began as a small machine shop has grown into a comprehensive manufacturing partner serving the aerospace, medical device, and semiconductor industries.
             </p>
             <p>
-              Our growth has been built on a foundation of technical expertise, quality-focused processes, and a commitment to meeting the exacting needs of our customers. Today, we operate a modern manufacturing facility equipped with advanced CNC machining centers, sheet metal fabrication equipment, and assembly capabilities.
+              Our growth has been built on a foundation of technical expertise, quality-focused processes, and a commitment to meeting the exacting needs of our customers. Today, we operate a modern manufacturing facility equipped with advanced CNC machining centers, sheet metal fabrication equipment, 3D printing technology, and assembly capabilities.
             </p>
             <p>
               With AS9100D and ISO 9001:2015 certifications, we maintain a quality management system that ensures consistent excellence in everything we produce. Our team of skilled engineers, machinists, and quality specialists brings decades of combined experience to every project we undertake.
@@ -127,212 +36,263 @@ const coreValues = [
           </div>
         </div>
         
-        <div class="rounded-lg overflow-hidden shadow-xl">
-          <img 
-            src="/images/about/facility-exterior.jpg" 
-            alt="Harley & Son Manufacturing Facility" 
-            class="w-full h-auto"
-          />
-        </div>
-      </div>
-    </div>
-  </section>
-  
-  <!-- Our Core Values Section -->
-  <section class="py-16 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl font-bold text-gray-900 mb-4">Our Core Values</h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          These principles guide our approach to business and manufacturing excellence.
-        </p>
-      </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        {coreValues.map((value) => (
-          <div class="bg-white rounded-lg shadow-md p-8 text-center">
-            <div class="inline-block p-4 bg-blue-100 rounded-full mb-4">
-              <img src={`/images/icons/${value.icon}`} alt={value.title} class="h-8 w-8" />
-            </div>
-            <h3 class="text-xl font-bold text-gray-900 mb-2">{value.title}</h3>
-            <p class="text-gray-600">{value.description}</p>
+        <div class="relative">
+          <div class="h-full overflow-hidden rounded-lg shadow-lg">
+            <img src="https://placehold.co/800x600/1e40af/ffffff.png?text=Manufacturing+Facility" alt="Harley & Son Manufacturing Facility" class="w-full h-full object-cover" />
           </div>
-        ))}
-      </div>
-    </div>
-  </section>
-  
-  <!-- Our Journey Timeline -->
-  <section class="py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl font-bold text-gray-900 mb-4">Our Journey</h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          From our founding to the present day, we've continually evolved to meet the needs of our customers.
-        </p>
-      </div>
-      
-      <div class="relative">
-        <!-- Timeline Line -->
-        <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-blue-200"></div>
-        
-        <!-- Timeline Content -->
-        <div class="space-y-12">
-          {milestones.map((milestone, index) => (
-            <div class="relative">
-              <div class="md:flex items-center">
-                <!-- Timeline Circle -->
-                <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full border-4 border-blue-500 bg-white"></div>
-                
-                <!-- Content Box -->
-                <div class={`md:w-1/2 ${index % 2 === 0 ? 'md:pr-12 md:text-right' : 'md:pl-12 md:ml-auto'}`}>
-                  <div class="bg-white rounded-lg shadow-md p-6">
-                    <div class="text-blue-600 font-bold text-xl mb-1">{milestone.year}</div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">{milestone.title}</h3>
-                    <p class="text-gray-600">{milestone.description}</p>
-                  </div>
-                </div>
+          <div class="absolute -bottom-6 -right-6 bg-white rounded-lg shadow-xl p-6 max-w-xs">
+            <div class="flex items-center">
+              <div class="flex-shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div class="ml-4">
+                <h4 class="text-lg font-bold text-gray-900">40+ Years</h4>
+                <p class="text-sm text-gray-600">Of manufacturing excellence</p>
               </div>
             </div>
-          ))}
+          </div>
         </div>
       </div>
     </div>
   </section>
   
-  <!-- Our Facility Section -->
+  <!-- Our Values -->
   <section class="py-16 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl font-bold text-gray-900 mb-4">Our Manufacturing Facility</h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          Our state-of-the-art facility is equipped with advanced manufacturing technology and equipment.
-        </p>
-      </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="rounded-lg overflow-hidden shadow-md">
-          <img 
-            src="/images/about/cnc-machining.jpg" 
-            alt="CNC Machining Center" 
-            class="w-full h-64 object-cover"
-          />
-          <div class="p-6 bg-white">
-            <h3 class="text-lg font-bold text-gray-900 mb-2">Precision Machining Area</h3>
-            <p class="text-gray-600">Advanced multi-axis CNC machining centers for complex parts manufacturing.</p>
-          </div>
-        </div>
-        
-        <div class="rounded-lg overflow-hidden shadow-md">
-          <img 
-            src="/images/about/quality-lab.jpg" 
-            alt="Quality Lab" 
-            class="w-full h-64 object-cover"
-          />
-          <div class="p-6 bg-white">
-            <h3 class="text-lg font-bold text-gray-900 mb-2">Quality Control Laboratory</h3>
-            <p class="text-gray-600">Precision measurement equipment including CMMs and optical systems.</p>
-          </div>
-        </div>
-        
-        <div class="rounded-lg overflow-hidden shadow-md">
-          <img 
-            src="/images/about/assembly-room.jpg" 
-            alt="Assembly Room" 
-            class="w-full h-64 object-cover"
-          />
-          <div class="p-6 bg-white">
-            <h3 class="text-lg font-bold text-gray-900 mb-2">Assembly Area</h3>
-            <p class="text-gray-600">Controlled environment for precision assembly of complex components.</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="mt-12 text-center">
-        <a 
-          href="/contact" 
-          class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
-        >
-          Schedule a Facility Tour
-        </a>
-      </div>
-    </div>
-  </section>
-  
-  <!-- Our Team Section -->
-  <section class="py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl font-bold text-gray-900 mb-4">Leadership Team</h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          Meet the experienced professionals who lead our company.
-        </p>
-      </div>
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">Our Core Values</h2>
       
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        {leadershipTeam.map((member) => (
-          <div class="bg-white rounded-lg shadow-md overflow-hidden">
-            <img 
-              src={member.image} 
-              alt={member.name} 
-              class="w-full h-64 object-cover"
-            />
-            <div class="p-6">
-              <h3 class="text-lg font-bold text-gray-900 mb-1">{member.name}</h3>
-              <p class="text-blue-600 font-medium mb-3">{member.title}</p>
-              <p class="text-gray-600 text-sm">{member.bio}</p>
-            </div>
+        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-300">
+          <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
           </div>
-        ))}
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Quality Excellence</h3>
+          <p class="text-gray-600">
+            We are committed to delivering components of the highest quality that meet or exceed our customers' specifications and expectations.
+          </p>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-300">
+          <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Innovation</h3>
+          <p class="text-gray-600">
+            We continually invest in new technologies and processes to enhance our manufacturing capabilities and provide innovative solutions for our customers.
+          </p>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-300">
+          <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Customer Partnership</h3>
+          <p class="text-gray-600">
+            We build long-term partnerships with our customers, working closely with them to understand their needs and provide tailored manufacturing solutions.
+          </p>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-300">
+          <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Integrity</h3>
+          <p class="text-gray-600">
+            We conduct business with honesty, transparency, and ethical practices in all relationships with customers, suppliers, employees, and the community.
+          </p>
+        </div>
       </div>
     </div>
   </section>
   
-  <!-- Certifications Section -->
+  <!-- Our Team -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">Leadership Team</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+          <img 
+            src="https://placehold.co/400x500/e2e8f0/1e40af.png?text=President+%26+CEO" 
+            alt="President & CEO"
+            class="w-full h-64 object-cover"
+          />
+          <div class="p-6">
+            <h3 class="text-lg font-bold text-gray-900 mb-1">Robert Harley</h3>
+            <p class="text-blue-600 font-medium mb-3">President & CEO</p>
+            <p class="text-gray-600 text-sm">
+              With over 30 years of experience in precision manufacturing, Robert leads the company's strategic vision and growth initiatives.
+            </p>
+          </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+          <img 
+            src="https://placehold.co/400x500/e2e8f0/1e40af.png?text=COO" 
+            alt="Chief Operations Officer"
+            class="w-full h-64 object-cover"
+          />
+          <div class="p-6">
+            <h3 class="text-lg font-bold text-gray-900 mb-1">Michael Harley</h3>
+            <p class="text-blue-600 font-medium mb-3">Chief Operations Officer</p>
+            <p class="text-gray-600 text-sm">
+              Michael oversees all manufacturing operations, ensuring quality, efficiency, and continuous improvement throughout the production process.
+            </p>
+          </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+          <img 
+            src="https://placehold.co/400x500/e2e8f0/1e40af.png?text=Director+of+Engineering" 
+            alt="Director of Engineering"
+            class="w-full h-64 object-cover"
+          />
+          <div class="p-6">
+            <h3 class="text-lg font-bold text-gray-900 mb-1">Jennifer Chen</h3>
+            <p class="text-blue-600 font-medium mb-3">Director of Engineering</p>
+            <p class="text-gray-600 text-sm">
+              Jennifer brings extensive expertise in manufacturing engineering, optimizing processes and implementing advanced manufacturing technologies.
+            </p>
+          </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+          <img 
+            src="https://placehold.co/400x500/e2e8f0/1e40af.png?text=Quality+Assurance+Manager" 
+            alt="Quality Assurance Manager"
+            class="w-full h-64 object-cover"
+          />
+          <div class="p-6">
+            <h3 class="text-lg font-bold text-gray-900 mb-1">David Rodriguez</h3>
+            <p class="text-blue-600 font-medium mb-3">Quality Assurance Manager</p>
+            <p class="text-gray-600 text-sm">
+              David ensures compliance with all quality standards and manages the company's AS9100D and ISO 9001:2015 quality management systems.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Our Facility -->
   <section class="py-16 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-16">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl font-bold text-gray-900 mb-6">Our Facility</h2>
+          <div class="prose prose-blue max-w-none">
+            <p>
+              Harley & Son operates a state-of-the-art 45,000 square foot manufacturing facility equipped with advanced machinery and technology to deliver precision components for the most demanding applications.
+            </p>
+            <p>
+              Our facility includes dedicated areas for CNC machining, sheet metal fabrication, 3D printing, assembly, and quality assurance. We continually invest in new equipment and technologies to enhance our manufacturing capabilities and meet the evolving needs of our customers.
+            </p>
+            <p>
+              The facility is organized for optimal workflow efficiency, from raw material receiving to finished product shipping, with quality checkpoints throughout the manufacturing process to ensure consistent excellence in everything we produce.
+            </p>
+          </div>
+          
+          <div class="mt-8 space-y-4">
+            <div class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-gray-700">45,000 square foot manufacturing facility</span>
+            </div>
+            <div class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-gray-700">Advanced CNC machining centers</span>
+            </div>
+            <div class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-gray-700">Precision sheet metal fabrication equipment</span>
+            </div>
+            <div class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-gray-700">State-of-the-art quality lab with CMMs</span>
+            </div>
+            <div class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-gray-700">Clean room assembly area</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="grid grid-cols-2 gap-4">
+          <div class="aspect-w-4 aspect-h-3">
+            <img src="https://placehold.co/600x450/e2e8f0/1e40af.png?text=Facility+Exterior" alt="Facility Exterior" class="object-cover rounded-lg shadow-md" />
+          </div>
+          <div class="aspect-w-4 aspect-h-3">
+            <img src="https://placehold.co/600x450/e2e8f0/1e40af.png?text=CNC+Machining" alt="CNC Machining" class="object-cover rounded-lg shadow-md" />
+          </div>
+          <div class="aspect-w-4 aspect-h-3">
+            <img src="https://placehold.co/600x450/e2e8f0/1e40af.png?text=Quality+Lab" alt="Quality Lab" class="object-cover rounded-lg shadow-md" />
+          </div>
+          <div class="aspect-w-4 aspect-h-3">
+            <img src="https://placehold.co/600x450/e2e8f0/1e40af.png?text=Assembly+Area" alt="Assembly Area" class="object-cover rounded-lg shadow-md" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Certifications -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
         <h2 class="text-3xl font-bold text-gray-900 mb-4">Our Certifications</h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          We maintain rigorous quality standards through these industry certifications.
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          Harley & Son maintains rigorous quality standards through industry-recognized certifications.
         </p>
       </div>
       
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="bg-white rounded-lg shadow-md p-8 text-center">
-          <img 
-            src="/images/as9100-badge.svg" 
-            alt="AS9100D Certification" 
-            class="h-20 w-auto mx-auto mb-4"
-          />
-          <h3 class="text-xl font-bold text-gray-900 mb-2">AS9100D</h3>
-          <p class="text-gray-600">
-            Quality Management System for Aviation, Space, and Defense Organizations, ensuring the highest standards for aerospace manufacturing.
-          </p>
+      <div class="flex flex-wrap justify-center gap-8">
+        <div class="bg-gray-50 rounded-lg p-6 flex items-center shadow-md">
+          <div class="bg-blue-600 text-white rounded-full w-16 h-16 flex items-center justify-center mr-6">
+            <span class="font-bold text-lg">AS</span>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-gray-900">AS9100D</h3>
+            <p class="text-gray-600">Aerospace Quality Management System</p>
+          </div>
         </div>
         
-        <div class="bg-white rounded-lg shadow-md p-8 text-center">
-          <img 
-            src="/images/iso9001-badge.svg" 
-            alt="ISO 9001:2015 Certification" 
-            class="h-20 w-auto mx-auto mb-4"
-          />
-          <h3 class="text-xl font-bold text-gray-900 mb-2">ISO 9001:2015</h3>
-          <p class="text-gray-600">
-            International Quality Management System Standard, demonstrating our commitment to consistent quality and customer satisfaction.
-          </p>
+        <div class="bg-gray-50 rounded-lg p-6 flex items-center shadow-md">
+          <div class="bg-blue-600 text-white rounded-full w-16 h-16 flex items-center justify-center mr-6">
+            <span class="font-bold text-lg">ISO</span>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-gray-900">ISO 9001:2015</h3>
+            <p class="text-gray-600">Quality Management System</p>
+          </div>
         </div>
         
-        <div class="bg-white rounded-lg shadow-md p-8 text-center">
-          <img 
-            src="/images/nadcap-badge.svg" 
-            alt="NADCAP Certification" 
-            class="h-20 w-auto mx-auto mb-4"
-          />
-          <h3 class="text-xl font-bold text-gray-900 mb-2">NADCAP</h3>
-          <p class="text-gray-600">
-            National Aerospace and Defense Contractors Accreditation Program certification for special processes used in aerospace manufacturing.
-          </p>
+        <div class="bg-gray-50 rounded-lg p-6 flex items-center shadow-md">
+          <div class="bg-blue-600 text-white rounded-full w-16 h-16 flex items-center justify-center mr-6">
+            <span class="font-bold text-sm">NADCAP</span>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-gray-900">NADCAP</h3>
+            <p class="text-gray-600">Special Process Certification</p>
+          </div>
         </div>
       </div>
     </div>
