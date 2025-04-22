@@ -1,0 +1,341 @@
+---
+// ContactForm.astro
+// A comprehensive contact form component with RFQ options for manufacturing
+
+// Define any props if needed
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { 
+  title = "Contact Us", 
+  description = "Fill out the form below and our team will get back to you as soon as possible."
+} = Astro.props;
+---
+
+<section class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="max-w-3xl mx-auto">
+      <!-- Contact Form Header -->
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900">{title}</h2>
+        <p class="mt-4 text-lg text-gray-600">{description}</p>
+      </div>
+      
+      <!-- Contact Form -->
+      <form id="contactForm" class="space-y-8" method="POST" action="/api/contact">
+        <!-- Inquiry Type -->
+        <div>
+          <label for="inquiryType" class="block text-sm font-medium text-gray-700 mb-1">
+            Inquiry Type*
+          </label>
+          <select 
+            id="inquiryType" 
+            name="inquiryType" 
+            class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+            required
+          >
+            <option value="">Please select an option</option>
+            <option value="quote">Request for Quote (RFQ)</option>
+            <option value="capabilities">Capabilities Information</option>
+            <option value="technical">Technical Support</option>
+            <option value="general">General Inquiry</option>
+          </select>
+        </div>
+        
+        <!-- Contact Information Section -->
+        <div class="bg-gray-50 rounded-lg p-6">
+          <h3 class="text-lg font-medium text-gray-900 mb-4">Contact Information</h3>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- First Name -->
+            <div>
+              <label for="firstName" class="block text-sm font-medium text-gray-700 mb-1">
+                First Name*
+              </label>
+              <input 
+                type="text" 
+                id="firstName" 
+                name="firstName" 
+                class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                required
+              />
+            </div>
+            
+            <!-- Last Name -->
+            <div>
+              <label for="lastName" class="block text-sm font-medium text-gray-700 mb-1">
+                Last Name*
+              </label>
+              <input 
+                type="text" 
+                id="lastName" 
+                name="lastName" 
+                class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                required
+              />
+            </div>
+            
+            <!-- Company Name -->
+            <div>
+              <label for="company" class="block text-sm font-medium text-gray-700 mb-1">
+                Company Name*
+              </label>
+              <input 
+                type="text" 
+                id="company" 
+                name="company" 
+                class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                required
+              />
+            </div>
+            
+            <!-- Job Title -->
+            <div>
+              <label for="jobTitle" class="block text-sm font-medium text-gray-700 mb-1">
+                Job Title
+              </label>
+              <input 
+                type="text" 
+                id="jobTitle" 
+                name="jobTitle" 
+                class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+              />
+            </div>
+            
+            <!-- Email -->
+            <div>
+              <label for="email" class="block text-sm font-medium text-gray-700 mb-1">
+                Email Address*
+              </label>
+              <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                required
+              />
+            </div>
+            
+            <!-- Phone -->
+            <div>
+              <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">
+                Phone Number*
+              </label>
+              <input 
+                type="tel" 
+                id="phone" 
+                name="phone" 
+                class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                required
+              />
+            </div>
+          </div>
+        </div>
+        
+        <!-- RFQ Specific Fields (shown only when RFQ is selected) -->
+        <div id="rfqFields" class="hidden bg-gray-50 rounded-lg p-6">
+          <h3 class="text-lg font-medium text-gray-900 mb-4">Project Details</h3>
+          
+          <div class="grid grid-cols-1 gap-6">
+            <!-- Project Name -->
+            <div>
+              <label for="projectName" class="block text-sm font-medium text-gray-700 mb-1">
+                Project Name
+              </label>
+              <input 
+                type="text" 
+                id="projectName" 
+                name="projectName" 
+                class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+              />
+            </div>
+            
+            <!-- Services Needed -->
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">
+                Services Needed
+              </label>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                <div class="flex items-center">
+                  <input 
+                    type="checkbox" 
+                    id="service-machining" 
+                    name="services" 
+                    value="precision-machining"
+                    class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                  />
+                  <label for="service-machining" class="ml-2 text-sm text-gray-700">
+                    Precision Machining
+                  </label>
+                </div>
+                <div class="flex items-center">
+                  <input 
+                    type="checkbox" 
+                    id="service-sheet-metal" 
+                    name="services" 
+                    value="sheet-metal"
+                    class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                  />
+                  <label for="service-sheet-metal" class="ml-2 text-sm text-gray-700">
+                    Sheet Metal Fabrication
+                  </label>
+                </div>
+                <div class="flex items-center">
+                  <input 
+                    type="checkbox" 
+                    id="service-3d-printing" 
+                    name="services" 
+                    value="3d-printing"
+                    class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                  />
+                  <label for="service-3d-printing" class="ml-2 text-sm text-gray-700">
+                    3D Printing
+                  </label>
+                </div>
+                <div class="flex items-center">
+                  <input 
+                    type="checkbox" 
+                    id="service-assembly" 
+                    name="services" 
+                    value="assembly"
+                    class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                  />
+                  <label for="service-assembly" class="ml-2 text-sm text-gray-700">
+                    Assembly Services
+                  </label>
+                </div>
+                <div class="flex items-center">
+                  <input 
+                    type="checkbox" 
+                    id="service-finishing" 
+                    name="services" 
+                    value="finishing"
+                    class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                  />
+                  <label for="service-finishing" class="ml-2 text-sm text-gray-700">
+                    Finishing & Processing
+                  </label>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Quantity -->
+            <div>
+              <label for="quantity" class="block text-sm font-medium text-gray-700 mb-1">
+                Estimated Quantity
+              </label>
+              <input 
+                type="text" 
+                id="quantity" 
+                name="quantity" 
+                class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+              />
+            </div>
+            
+            <!-- Target Timeline -->
+            <div>
+              <label for="timeline" class="block text-sm font-medium text-gray-700 mb-1">
+                Target Timeline
+              </label>
+              <select 
+                id="timeline" 
+                name="timeline" 
+                class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+              >
+                <option value="">Please select an option</option>
+                <option value="urgent">Urgent (1-2 weeks)</option>
+                <option value="standard">Standard (3-4 weeks)</option>
+                <option value="relaxed">Relaxed (5+ weeks)</option>
+                <option value="planning">Just Planning</option>
+              </select>
+            </div>
+            
+            <!-- File Upload -->
+            <div>
+              <label for="fileUpload" class="block text-sm font-medium text-gray-700 mb-1">
+                Upload Files (CAD, drawings, specifications)
+              </label>
+              <input 
+                type="file" 
+                id="fileUpload" 
+                name="fileUpload" 
+                class="block w-full text-sm text-gray-500
+                file:mr-4 file:py-2 file:px-4
+                file:rounded-md file:border-0
+                file:text-sm file:font-medium
+                file:bg-blue-50 file:text-blue-700
+                hover:file:bg-blue-100"
+                multiple
+              />
+              <p class="mt-1 text-xs text-gray-500">
+                Accepted file types: .pdf, .dxf, .dwg, .step, .stp, .iges, .igs (Max 20MB each)
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Message -->
+        <div>
+          <label for="message" class="block text-sm font-medium text-gray-700 mb-1">
+            Message*
+          </label>
+          <textarea 
+            id="message" 
+            name="message" 
+            rows="5" 
+            class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+            required
+          ></textarea>
+        </div>
+        
+        <!-- Privacy Policy Agreement -->
+        <div class="flex items-start">
+          <div class="flex items-center h-5">
+            <input 
+              id="privacy" 
+              name="privacy" 
+              type="checkbox" 
+              class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+              required
+            />
+          </div>
+          <div class="ml-3 text-sm">
+            <label for="privacy" class="font-medium text-gray-700">
+              I agree to the <a href="/privacy-policy" class="text-blue-600 hover:text-blue-800">Privacy Policy</a>*
+            </label>
+          </div>
+        </div>
+        
+        <!-- Submit Button -->
+        <div>
+          <button 
+            type="submit" 
+            class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+          >
+            Submit Inquiry
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Show/hide RFQ fields based on inquiry type selection
+  document.addEventListener('DOMContentLoaded', () => {
+    const inquiryTypeSelect = document.getElementById('inquiryType');
+    const rfqFields = document.getElementById('rfqFields');
+    
+    if (inquiryTypeSelect && rfqFields) {
+      inquiryTypeSelect.addEventListener('change', () => {
+        if (inquiryTypeSelect.value === 'quote') {
+          rfqFields.classList.remove('hidden');
+        } else {
+          rfqFields.classList.add('hidden');
+        }
+      });
+    }
+  });
+</script>
