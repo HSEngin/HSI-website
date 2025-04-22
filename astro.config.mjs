@@ -1,6 +1,15 @@
-import { defineConfig } from 'astro/config'
+import { defineConfig } from 'astro/config';
+import tailwind from '@astrojs/tailwind';
 
+// https://astro.build/config
 export default defineConfig({
-  site: 'https://HSI-website.github.io',
-  //base: '',
-})
+  integrations: [tailwind()],
+  site: 'https://HSI-website.github.io', // Replace with your actual domain
+  trailingSlash: 'always',
+  build: {
+    assets: '_assets'
+  },
+  server: {
+    port: 3000
+  }
+});
