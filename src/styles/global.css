@@ -37,4 +37,59 @@
   .btn-outline {
     @apply border border-gray-300 text-gray-700 hover:bg-gray-50;
   }
+  
+  /* Enhance animations */
+  .fade-in {
+    @apply transition-opacity duration-300 ease-in-out;
+  }
+  
+  /* Add hover effects */
+  .hover-lift {
+    @apply transition-transform duration-300;
+  }
+  
+  .hover-lift:hover {
+    @apply transform -translate-y-1;
+  }
+  
+  /* Improved card styles */
+  .card {
+    @apply bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300;
+  }
+  
+  .card-body {
+    @apply p-6;
+  }
+  
+  /* Badges */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+  
+  .badge-blue {
+    @apply bg-blue-100 text-blue-800;
+  }
+  
+  .badge-gray {
+    @apply bg-gray-100 text-gray-800;
+  }
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease-out;
 }
