@@ -1,0 +1,61 @@
+---
+// IndustriesSection.astro
+// Component for displaying industries served on the homepage
+
+// Define the interface for industry items
+interface IndustryItem {
+  name: string;
+  image: string;
+  link: string;
+}
+
+// Define props interface
+interface Props {
+  title: string;
+  industries: IndustryItem[];
+}
+
+// Get the props with destructuring
+const { title, industries } = Astro.props;
+---
+
+<section class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <!-- Section header -->
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-gray-900">{title}</h2>
+    </div>
+    
+    <!-- Industries grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {industries.map((industry) => (
+        <a href={industry.link} class="group block">
+          <div class="relative overflow-hidden rounded-lg shadow-md">
+            <img 
+              src={industry.image} 
+              alt={`${industry.name} Industry`}
+              class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6">
+              <h3 class="text-xl font-bold text-white">{industry.name}</h3>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+    
+    <!-- View all industries button -->
+    <div class="mt-10 text-center">
+      <a 
+        href="/industries" 
+        class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium"
+      >
+        View All Industries
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
