@@ -1,12 +1,10 @@
 ---
-// Astro homepage for Harley & Son
-// This is the main layout for the homepage
+// Homepage for Harley & Son
 import MainLayout from '../layouts/MainLayout.astro';
 import HeroSection from '../components/HeroSection.astro';
 import ServicesSection from '../components/ServicesSection.astro';
 import IndustriesSection from '../components/IndustriesSection.astro';
 import CertificationsSection from '../components/CertificationsSection.astro';
-import TestimonialsSection from '../components/TestimonialsSection.astro';
 import CTASection from '../components/CTASection.astro';
 ---
 
@@ -48,12 +46,6 @@ import CTASection from '../components/CTASection.astro';
         description: "Comprehensive assembly for high-tech components with perfect precision.",
         icon: "assembly-icon.svg",
         link: "/services/assembly"
-      },
-      {
-        title: "Finishing & Processing",
-        description: "NADCAP certified processing for anodizing, plating, heat treating, and coatings.",
-        icon: "finishing-icon.svg",
-        link: "/services/finishing"
       }
     ]}
   />
@@ -76,11 +68,6 @@ import CTASection from '../components/CTASection.astro';
         name: "Semiconductor",
         image: "/images/semiconductor.jpg",
         link: "/industries/semiconductor"
-      },
-      {
-        name: "Electronics",
-        image: "/images/electronics.jpg",
-        link: "/industries/electronics"
       }
     ]}
   />
@@ -99,28 +86,6 @@ import CTASection from '../components/CTASection.astro';
         name: "ISO 9001:2015",
         logo: "/images/iso9001.svg",
         description: "International Quality Management System standard"
-      },
-      {
-        name: "NADCAP",
-        logo: "/images/nadcap.svg",
-        description: "National Aerospace and Defense Contractors Accreditation Program"
-      }
-    ]}
-  />
-  
-  <!-- Testimonials/Projects Section -->
-  <TestimonialsSection 
-    title="What Our Clients Say"
-    testimonials={[
-      {
-        quote: "Harley & Son consistently delivers precision parts that exceed our specifications. Their attention to detail is unmatched in the industry.",
-        author: "Engineering Manager",
-        company: "Leading Aerospace Manufacturer"
-      },
-      {
-        quote: "Their ability to handle complex medical device components with the required precision has made them our go-to manufacturing partner.",
-        author: "Production Director",
-        company: "Medical Device Innovator"
       }
     ]}
   />
