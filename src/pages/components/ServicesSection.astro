@@ -1,0 +1,66 @@
+---
+// ServicesSection.astro
+// Component for displaying service capabilities on the homepage
+
+// Define the interface for service items
+interface ServiceItem {
+  title: string;
+  description: string;
+  icon: string;
+  link: string;
+}
+
+// Define props interface
+interface Props {
+  title: string;
+  subtitle: string;
+  services: ServiceItem[];
+}
+
+// Get the props with destructuring
+const { title, subtitle, services } = Astro.props;
+---
+
+<section class="py-20 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <!-- Section header -->
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900">{title}</h2>
+      <p class="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">{subtitle}</p>
+    </div>
+    
+    <!-- Services grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {services.map((service) => (
+        <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+          <div class="p-6">
+            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+              <img src={service.icon} alt={service.title} class="w-6 h-6" />
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">{service.title}</h3>
+            <p class="text-gray-600 mb-4">{service.description}</p>
+            <a 
+              href={service.link} 
+              class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium"
+            >
+              Learn more
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+    
+    <!-- View all services button -->
+    <div class="mt-12 text-center">
+      <a 
+        href="/services" 
+        class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-4 md:text-lg md:px-8"
+      >
+        View All Services
+      </a>
+    </div>
+  </div>
+</section>
