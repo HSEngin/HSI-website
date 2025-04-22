@@ -30,12 +30,12 @@ const { title, subtitle, services } = Astro.props;
     </div>
     
     <!-- Services grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
       {services.map((service) => (
         <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
           <div class="p-6">
             <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-              <img src={service.icon} alt={service.title} class="w-6 h-6" />
+              <img src={`/images/icons/${service.icon}`} alt={service.title} class="w-6 h-6" />
             </div>
             <h3 class="text-xl font-bold text-gray-900 mb-2">{service.title}</h3>
             <p class="text-gray-600 mb-4">{service.description}</p>
