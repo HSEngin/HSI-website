@@ -13,6 +13,9 @@ const {
   title, 
   description = "Harley & Son specializes in turnkey mechanical parts and assemblies for the aerospace, medical device, semiconductor, and electronics industries with AS 9100 quality system." 
 } = Astro.props;
+
+// Import global styles
+import "../styles/global.css";
 ---
 
 <!DOCTYPE html>
@@ -25,20 +28,16 @@ const {
     <title>{title}</title>
     
     <!-- Preload critical fonts -->
-    <link 
-      rel="preload" 
-      href="/fonts/inter-var.woff2" 
-      as="font" 
-      type="font/woff2" 
-      crossorigin 
-    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- SEO Meta Tags -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://harleyandson.com" />
-    <meta property="og:image" content="https://harleyandson.com/og-image.jpg" />
+    <meta property="og:image" content="https://placehold.co/1200x630/1d4ed8/ffffff.png?text=Harley+%26+Son" />
   </head>
   <body class="font-sans text-gray-800 antialiased">
     <header class="bg-white shadow-sm sticky top-0 z-50">
@@ -47,11 +46,8 @@ const {
           <!-- Logo -->
           <div class="flex-shrink-0">
             <a href="/" class="flex items-center">
-              <img 
-                src="/images/harley-and-son-logo.svg" 
-                alt="Harley & Son Logo" 
-                class="h-10 w-auto" 
-              />
+              <div class="bg-blue-600 text-white font-bold text-xl p-2 rounded-md mr-2">H&S</div>
+              <span class="text-xl font-bold text-blue-700">Harley & Son</span>
             </a>
           </div>
           
@@ -75,7 +71,6 @@ const {
                   <a href="/services/sheet-metal" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Sheet Metal Fabrication</a>
                   <a href="/services/3d-printing" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">3D Printing</a>
                   <a href="/services/assembly" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Assembly Services</a>
-                  <a href="/services/finishing" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Finishing & Processing</a>
                 </div>
               </div>
             </div>
@@ -93,7 +88,6 @@ const {
                   <a href="/industries/aerospace" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Aerospace</a>
                   <a href="/industries/medical" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Medical Devices</a>
                   <a href="/industries/semiconductor" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Semiconductor</a>
-                  <a href="/industries/electronics" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Electronics</a>
                 </div>
               </div>
             </div>
@@ -169,9 +163,6 @@ const {
               <a href="/services/assembly" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">
                 Assembly Services
               </a>
-              <a href="/services/finishing" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">
-                Finishing & Processing
-              </a>
             </div>
           </div>
           
@@ -196,9 +187,6 @@ const {
               </a>
               <a href="/industries/semiconductor" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">
                 Semiconductor
-              </a>
-              <a href="/industries/electronics" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">
-                Electronics
               </a>
             </div>
           </div>
@@ -235,13 +223,12 @@ const {
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
           <!-- Company Info -->
           <div class="col-span-1 md:col-span-1">
-            <img 
-              src="/images/harley-and-son-logo-white.svg" 
-              alt="Harley & Son Logo" 
-              class="h-10 w-auto mb-4" 
-            />
+            <div class="flex items-center mb-4">
+              <div class="bg-blue-600 text-white font-bold text-xl p-2 rounded-md mr-2">H&S</div>
+              <span class="text-xl font-bold">Harley & Son</span>
+            </div>
             <p class="text-gray-400 mt-2">
-              For over forty years, Harley & Son has been a key supplier of precision parts and subassemblies.
+              For over forty years, Harley & Son has been a key supplier of precision parts and subassemblies to the Aerospace, Medical Device, and Semiconductor Industries.
             </p>
             <div class="mt-4 flex space-x-4">
               <a href="#" class="text-gray-400 hover:text-white">
@@ -269,9 +256,6 @@ const {
               <li>
                 <a href="/services/assembly" class="text-gray-400 hover:text-white">Assembly Services</a>
               </li>
-              <li>
-                <a href="/services/finishing" class="text-gray-400 hover:text-white">Finishing & Processing</a>
-              </li>
             </ul>
           </div>
           
@@ -287,9 +271,6 @@ const {
               </li>
               <li>
                 <a href="/industries/semiconductor" class="text-gray-400 hover:text-white">Semiconductor</a>
-              </li>
-              <li>
-                <a href="/industries/electronics" class="text-gray-400 hover:text-white">Electronics</a>
               </li>
             </ul>
           </div>
@@ -331,31 +312,36 @@ const {
       </div>
     </footer>
     
-    <!-- Client-side JavaScript - minimal since we're using Astro -->
+    <!-- Client-side JavaScript -->
     <script>
       // Mobile menu toggle
-      document.getElementById('mobile-menu-button')?.addEventListener('click', function() {
+      document.addEventListener('DOMContentLoaded', () => {
+        // Mobile menu button
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
-        if (mobileMenu?.classList.contains('hidden')) {
-          mobileMenu.classList.remove('hidden');
-        } else {
-          mobileMenu?.classList.add('hidden');
+        
+        if (mobileMenuButton && mobileMenu) {
+          mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+            mobileMenuButton.setAttribute('aria-expanded', (!isExpanded).toString());
+          });
         }
-      });
-      
-      // Mobile dropdown toggles
-      document.querySelectorAll('.mobile-dropdown-toggle').forEach(button => {
-        button.addEventListener('click', function() {
-          const targetId = this.getAttribute('aria-controls');
-          const targetMenu = document.getElementById(targetId);
-          
-          if (targetMenu?.classList.contains('hidden')) {
-            targetMenu.classList.remove('hidden');
-            this.setAttribute('aria-expanded', 'true');
-          } else {
-            targetMenu?.classList.add('hidden');
-            this.setAttribute('aria-expanded', 'false');
-          }
+        
+        // Mobile dropdown toggles
+        const mobileDropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
+        
+        mobileDropdownToggles.forEach(button => {
+          button.addEventListener('click', () => {
+            const targetId = button.getAttribute('aria-controls');
+            const targetMenu = document.getElementById(targetId);
+            
+            if (targetMenu) {
+              targetMenu.classList.toggle('hidden');
+              const isExpanded = button.getAttribute('aria-expanded') === 'true';
+              button.setAttribute('aria-expanded', (!isExpanded).toString());
+            }
+          });
         });
       });
     </script>
