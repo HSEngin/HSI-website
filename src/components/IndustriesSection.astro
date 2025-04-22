@@ -5,7 +5,7 @@
 // Define the interface for industry items
 interface IndustryItem {
   name: string;
-  image: string;
+  image?: string;
   link: string;
 }
 
@@ -17,6 +17,19 @@ interface Props {
 
 // Get the props with destructuring
 const { title, industries } = Astro.props;
+
+// Default image URLs if none provided
+const defaultImages = {
+  "Aerospace": "https://placehold.co/600x400/003366/ffffff.png?text=Aerospace",
+  "Medical Devices": "https://placehold.co/600x400/006633/ffffff.png?text=Medical+Devices",
+  "Semiconductor": "https://placehold.co/600x400/660033/ffffff.png?text=Semiconductor",
+  "Electronics": "https://placehold.co/600x400/333366/ffffff.png?text=Electronics"
+};
+
+// Helper function to get image for an industry
+const getIndustryImage = (name: string, image?: string) => {
+  return image || defaultImages[name] || defaultImages["Aerospace"];
+};
 ---
 
 <section class="py-16 bg-white">
@@ -24,21 +37,34 @@ const { title, industries } = Astro.props;
     <!-- Section header -->
     <div class="text-center mb-12">
       <h2 class="text-3xl font-bold text-gray-900">{title}</h2>
+      <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
+        Our expertise spans across critical industries where precision and reliability are paramount.
+      </p>
     </div>
     
     <!-- Industries grid -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       {industries.map((industry) => (
         <a href={industry.link} class="group block">
-          <div class="relative overflow-hidden rounded-lg shadow-md">
+          <div class="relative h-80 overflow-hidden rounded-lg shadow-md transition duration-300 group-hover:shadow-xl">
             <img 
-              src={industry.image} 
+              src={getIndustryImage(industry.name, industry.image)} 
               alt={`${industry.name} Industry`}
-              class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
             <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
             <div class="absolute bottom-0 left-0 right-0 p-6">
+              <div class="bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded-md inline-block mb-2">INDUSTRY</div>
               <h3 class="text-xl font-bold text-white">{industry.name}</h3>
+              <p class="text-gray-200 mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                Precision manufacturing solutions for the {industry.name.toLowerCase()} industry.
+              </p>
+              <div class="mt-4 flex items-center text-gray-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <span class="text-sm font-medium">Learn more</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
             </div>
           </div>
         </a>
