@@ -1,0 +1,28 @@
+---
+// CTASection.astro
+// Component for call-to-action sections throughout the site
+
+// Define props interface
+interface Props {
+  title: string;
+  description: string;
+  buttonText: string;
+  buttonLink: string;
+}
+
+// Get the props with destructuring
+const { title, description, buttonText, buttonLink } = Astro.props;
+---
+
+<section class="py-16 bg-blue-700 text-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center">
+    <h2 class="text-3xl font-bold mb-4">{title}</h2>
+    <p class="text-xl text-blue-100 max-w-3xl mx-auto mb-8">{description}</p>
+    <a 
+      href={buttonLink} 
+      class="inline-block bg-white text-blue-700 hover:bg-blue-50 font-medium py-3 px-8 rounded-md transition duration-300"
+    >
+      {buttonText}
+    </a>
+  </div>
+</section>
