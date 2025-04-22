@@ -5,7 +5,7 @@
 // Define the interface for certification items
 interface CertificationItem {
   name: string;
-  logo: string;
+  logo?: string;
   description: string;
 }
 
@@ -18,6 +18,32 @@ interface Props {
 
 // Get the props with destructuring
 const { title, subtitle, certifications } = Astro.props;
+
+// SVG logos for certifications
+const certLogos = {
+  "AS9100D": `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="h-16 w-auto mx-auto mb-4">
+    <circle cx="50" cy="50" r="45" fill="#1d4ed8" />
+    <path d="M30 50 L45 35 L70 60 L45 70 Z" fill="white" />
+    <text x="50" y="45" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white" font-weight="bold">AS</text>
+    <text x="50" y="60" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white" font-weight="bold">9100D</text>
+  </svg>`,
+  "ISO 9001:2015": `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="h-16 w-auto mx-auto mb-4">
+    <circle cx="50" cy="50" r="45" fill="#1d4ed8" />
+    <text x="50" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="white" font-weight="bold">ISO</text>
+    <text x="50" y="60" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="white" font-weight="bold">9001</text>
+    <text x="50" y="75" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">2015</text>
+  </svg>`,
+  "NADCAP": `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="h-16 w-auto mx-auto mb-4">
+    <circle cx="50" cy="50" r="45" fill="#1d4ed8" />
+    <text x="50" y="55" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="white" font-weight="bold">NADCAP</text>
+  </svg>`
+};
+
+// Helper function to get logo for a certification
+const getCertLogo = (name: string, logo?: string) => {
+  if (logo) return `<img src="${logo}" alt="${name}" class="h-16 w-auto mx-auto mb-4" />`;
+  return certLogos[name] || '';
+};
 ---
 
 <section class="py-16 bg-gray-50">
@@ -30,27 +56,70 @@ const { title, subtitle, certifications } = Astro.props;
     
     <!-- Certifications grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {certifications.map((certification) => (
-        <div class="bg-white rounded-lg shadow-md p-6 text-center">
-          <img 
-            src={certification.logo} 
-            alt={`${certification.name} Certification`}
-            class="h-16 mx-auto mb-4"
-          />
-          <h3 class="text-xl font-bold text-gray-900 mb-2">{certification.name}</h3>
-          <p class="text-gray-600">{certification.description}</p>
+      {certifications.map((cert) => (
+        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-300 text-center">
+          <Fragment set:html={getCertLogo(cert.name, cert.logo)} />
+          <h3 class="text-xl font-bold text-gray-900 mb-2">{cert.name}</h3>
+          <p class="text-gray-600">{cert.description}</p>
         </div>
       ))}
     </div>
     
-    <!-- Quality assurance link -->
-    <div class="mt-10 text-center">
-      <a 
-        href="/quality" 
-        class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
-      >
-        Learn More About Our Quality Assurance
-      </a>
+    <div class="mt-12 bg-white rounded-lg shadow-md p-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+        <div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">Quality You Can Trust</h3>
+          <p class="text-gray-600 mb-4">
+            Our commitment to quality is more than just certifications – it's embedded in our culture and processes. Every part we manufacture undergoes rigorous testing and inspection to ensure it meets the highest standards.
+          </p>
+          <ul class="space-y-2">
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Comprehensive quality management system</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Advanced measurement and testing equipment</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Thorough documentation and traceability</span>
+            </li>
+          </ul>
+          <div class="mt-6">
+            <a 
+              href="/quality" 
+              class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium"
+            >
+              Learn more about our quality standards
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="hidden md:block">
+          <div class="bg-blue-50 p-5 rounded-lg relative overflow-hidden">
+            <div class="relative z-10">
+              <div class="flex justify-center items-center h-64">
+                <div class="text-center">
+                  <div class="text-5xl font-bold text-blue-600 mb-2">100%</div>
+                  <div class="text-xl font-medium text-gray-700">Quality Inspected</div>
+                  <p class="text-gray-500 mt-2">Every component undergoes thorough inspection before delivery</p>
+                </div>
+              </div>
+            </div>
+            <div class="absolute top-0 right-0 -mt-6 -mr-6 w-24 h-24 bg-blue-200 rounded-full opacity-50"></div>
+            <div class="absolute bottom-0 left-0 -mb-6 -ml-6 w-36 h-36 bg-blue-200 rounded-full opacity-50"></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
