@@ -1,0 +1,56 @@
+---
+// CertificationsSection.astro
+// Component for displaying certifications on the homepage
+
+// Define the interface for certification items
+interface CertificationItem {
+  name: string;
+  logo: string;
+  description: string;
+}
+
+// Define props interface
+interface Props {
+  title: string;
+  subtitle: string;
+  certifications: CertificationItem[];
+}
+
+// Get the props with destructuring
+const { title, subtitle, certifications } = Astro.props;
+---
+
+<section class="py-16 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <!-- Section header -->
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-gray-900">{title}</h2>
+      <p class="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">{subtitle}</p>
+    </div>
+    
+    <!-- Certifications grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {certifications.map((certification) => (
+        <div class="bg-white rounded-lg shadow-md p-6 text-center">
+          <img 
+            src={certification.logo} 
+            alt={`${certification.name} Certification`}
+            class="h-16 mx-auto mb-4"
+          />
+          <h3 class="text-xl font-bold text-gray-900 mb-2">{certification.name}</h3>
+          <p class="text-gray-600">{certification.description}</p>
+        </div>
+      ))}
+    </div>
+    
+    <!-- Quality assurance link -->
+    <div class="mt-10 text-center">
+      <a 
+        href="/quality" 
+        class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
+      >
+        Learn More About Our Quality Assurance
+      </a>
+    </div>
+  </div>
+</section>
