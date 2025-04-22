@@ -15,7 +15,6 @@ import CTASection from '../components/CTASection.astro';
     subtitle="For over forty years, Harley & Son has been a key supplier of precision parts and subassemblies to the Aerospace, Medical Device, and Semiconductor Electronics Industries."
     ctaText="Request a Quote"
     ctaLink="/contact"
-    bgImage="/images/hero-manufacturing.jpg"
   />
   
   <!-- Key Services Section -->
@@ -25,27 +24,33 @@ import CTASection from '../components/CTASection.astro';
     services={[
       {
         title: "Precision Machining",
-        description: "High-precision parts manufactured to the most demanding specifications.",
-        icon: "precision-icon.svg",
+        description: "High-precision parts manufactured to the most demanding specifications with tight tolerances and exceptional finish quality.",
         link: "/services/machining"
       },
       {
         title: "Sheet Metal Fabrication",
-        description: "Custom sheet metal components with exceptional quality and precision.",
-        icon: "sheet-metal-icon.svg",
+        description: "Custom sheet metal components for complex assemblies, with precision cutting, forming, and finishing capabilities.",
         link: "/services/sheet-metal"
       },
       {
         title: "3D Printing",
-        description: "Complex components produced in a fraction of traditional manufacturing time.",
-        icon: "3d-printing-icon.svg",
+        description: "Additive manufacturing for rapid prototyping and complex parts that would be difficult to machine using traditional methods.",
         link: "/services/3d-printing"
       },
       {
         title: "Assembly Services",
-        description: "Comprehensive assembly for high-tech components with perfect precision.",
-        icon: "assembly-icon.svg",
+        description: "Comprehensive assembly for high-tech components, ensuring perfect integration of all manufactured parts.",
         link: "/services/assembly"
+      },
+      {
+        title: "Finishing & Processing",
+        description: "NADCAP certified processing services including anodizing, plating, heat treating, and specialty coatings.",
+        link: "/services/finishing"
+      },
+      {
+        title: "Quality Assurance",
+        description: "Rigorous testing and inspection services ensure every part meets or exceeds specifications and industry standards.",
+        link: "/quality"
       }
     ]}
   />
@@ -56,21 +61,105 @@ import CTASection from '../components/CTASection.astro';
     industries={[
       {
         name: "Aerospace",
-        image: "/images/aerospace.jpg",
         link: "/industries/aerospace"
       },
       {
         name: "Medical Devices",
-        image: "/images/medical.jpg",
         link: "/industries/medical"
       },
       {
         name: "Semiconductor",
-        image: "/images/semiconductor.jpg",
         link: "/industries/semiconductor"
       }
     ]}
   />
+  
+  <!-- Company Highlights -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl font-bold text-gray-900 mb-6">Why Choose Harley & Son?</h2>
+          <div class="prose prose-blue max-w-none">
+            <p class="text-lg">
+              From precision machining to complete assembly, we provide end-to-end manufacturing solutions that meet the most demanding requirements in high-tech industries.
+            </p>
+            
+            <div class="mt-8 space-y-6">
+              <div class="flex">
+                <div class="flex-shrink-0">
+                  <div class="flex items-center justify-center h-12 w-12 rounded-md bg-blue-600 text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                  </div>
+                </div>
+                <div class="ml-4">
+                  <h3 class="text-lg font-medium text-gray-900">AS9100D and ISO 9001:2015 Certified</h3>
+                  <p class="mt-2 text-gray-600">
+                    Our comprehensive quality management system ensures consistent excellence in everything we produce.
+                  </p>
+                </div>
+              </div>
+              
+              <div class="flex">
+                <div class="flex-shrink-0">
+                  <div class="flex items-center justify-center h-12 w-12 rounded-md bg-blue-600 text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                </div>
+                <div class="ml-4">
+                  <h3 class="text-lg font-medium text-gray-900">On-Time Delivery</h3>
+                  <p class="mt-2 text-gray-600">
+                    We understand the importance of meeting production schedules, with 99.8% on-time delivery performance.
+                  </p>
+                </div>
+              </div>
+              
+              <div class="flex">
+                <div class="flex-shrink-0">
+                  <div class="flex items-center justify-center h-12 w-12 rounded-md bg-blue-600 text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                    </svg>
+                  </div>
+                </div>
+                <div class="ml-4">
+                  <h3 class="text-lg font-medium text-gray-900">Expert Engineering Support</h3>
+                  <p class="mt-2 text-gray-600">
+                    Our experienced team provides design for manufacturability (DFM) feedback to optimize your designs for production.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="relative">
+          <div class="aspect-w-16 aspect-h-9 lg:aspect-none">
+            <div class="h-full overflow-hidden rounded-lg shadow-lg">
+              <img src="https://placehold.co/800x600/1e40af/ffffff.png?text=Manufacturing+Excellence" alt="Manufacturing Excellence" class="w-full h-full object-cover" />
+            </div>
+          </div>
+          <div class="absolute -bottom-6 -right-6 bg-white rounded-lg shadow-xl p-6 max-w-xs">
+            <div class="flex items-center">
+              <div class="flex-shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <div class="ml-4">
+                <h4 class="text-lg font-bold text-gray-900">40+ Years</h4>
+                <p class="text-sm text-gray-600">Of manufacturing excellence and industry experience</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
   
   <!-- Certifications Section -->
   <CertificationsSection 
@@ -79,22 +168,111 @@ import CTASection from '../components/CTASection.astro';
     certifications={[
       {
         name: "AS9100D",
-        logo: "/images/as9100.svg",
-        description: "Aerospace Quality Management System certification"
+        description: "Aerospace Quality Management System certification, ensuring compliance with the most stringent aerospace industry standards."
       },
       {
         name: "ISO 9001:2015",
-        logo: "/images/iso9001.svg",
-        description: "International Quality Management System standard"
+        description: "International Quality Management System standard, demonstrating our commitment to consistent quality and customer satisfaction."
+      },
+      {
+        name: "NADCAP",
+        description: "National Aerospace and Defense Contractors Accreditation Program certification for special processes used in aerospace manufacturing."
       }
     ]}
   />
   
-  <!-- Call to Action Section -->
+  <!-- Testimonials Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900">What Our Clients Say</h2>
+        <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
+          Our reputation is built on delivering exceptional quality and service to our clients.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-gray-50 rounded-lg p-6 shadow-md">
+          <div class="flex items-center mb-4">
+            <div class="text-blue-600">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
+              </svg>
+            </div>
+            <div class="ml-4">
+              <div class="flex">
+                {[...Array(5)].map(() => (
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
+              </div>
+            </div>
+          </div>
+          <blockquote class="text-gray-700 italic mb-4">
+            "Harley & Son consistently delivers precision components that meet our exacting specifications. Their quality and on-time delivery have made them a trusted partner for our critical aerospace projects."
+          </blockquote>
+          <div class="font-medium text-gray-900">Engineering Manager</div>
+          <div class="text-gray-600 text-sm">Leading Aircraft Manufacturer</div>
+        </div>
+        
+        <div class="bg-gray-50 rounded-lg p-6 shadow-md">
+          <div class="flex items-center mb-4">
+            <div class="text-blue-600">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
+              </svg>
+            </div>
+            <div class="ml-4">
+              <div class="flex">
+                {[...Array(5)].map(() => (
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
+              </div>
+            </div>
+          </div>
+          <blockquote class="text-gray-700 italic mb-4">
+            "The team at Harley & Son has been instrumental in the success of our medical device development. Their attention to detail and ability to meet tight tolerances has exceeded our expectations."
+          </blockquote>
+          <div class="font-medium text-gray-900">Product Development Director</div>
+          <div class="text-gray-600 text-sm">Medical Device Company</div>
+        </div>
+        
+        <div class="bg-gray-50 rounded-lg p-6 shadow-md">
+          <div class="flex items-center mb-4">
+            <div class="text-blue-600">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
+              </svg>
+            </div>
+            <div class="ml-4">
+              <div class="flex">
+                {[...Array(5)].map(() => (
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
+              </div>
+            </div>
+          </div>
+          <blockquote class="text-gray-700 italic mb-4">
+            "As a semiconductor equipment manufacturer, we require absolute precision in our parts. Harley & Son consistently delivers components that integrate perfectly into our systems, reducing our assembly time and improving reliability."
+          </blockquote>
+          <div class="font-medium text-gray-900">Supply Chain Manager</div>
+          <div class="text-gray-600 text-sm">Semiconductor Equipment Manufacturer</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Call to Action -->
   <CTASection 
     title="Ready to Start Your Next Project?"
-    description="Contact us today to discuss your precision manufacturing needs."
+    description="Contact us today to discuss your precision manufacturing needs and request a quote."
     buttonText="Request a Quote"
     buttonLink="/contact"
+    withStats={true}
   />
 </MainLayout>
