@@ -1,0 +1,278 @@
+---
+// services/machining.astro
+// Example of a service detail page for Precision Machining
+import MainLayout from '../../layouts/MainLayout.astro';
+import CTASection from '../../components/CTASection.astro';
+
+// Page-specific metadata
+const pageTitle = "Precision Machining Services | Harley & Son";
+const pageDescription = "Harley & Son provides high-precision CNC machining services for aerospace, medical, and semiconductor industries with AS9100D certification.";
+
+// Equipment data - can be moved to a separate data file as your site grows
+const equipment = [
+  {
+    name: "5-Axis CNC Machining Centers",
+    description: "For complex parts requiring multi-face machining in a single setup",
+    capabilities: "Tolerances up to ±0.0005\", 5-axis simultaneous machining"
+  },
+  {
+    name: "CNC Turning Centers",
+    description: "Advanced turning centers with live tooling capabilities",
+    capabilities: "Diameter range up to 16\", length up to 40\""
+  },
+  {
+    name: "Wire EDM",
+    description: "Precision cutting of hard materials with high accuracy",
+    capabilities: "0.004\" minimum wire diameter, position accuracy ±0.0001\""
+  },
+  {
+    name: "Coordinate Measuring Machines (CMM)",
+    description: "Quality assurance with automated precision measurement",
+    capabilities: "Resolution of 0.00005\", automated inspection reports"
+  }
+];
+
+// Materials commonly machined
+const materials = [
+  "Aluminum (6061, 7075, 2024, etc.)",
+  "Stainless Steel (303, 304, 316, 17-4 PH)",
+  "Titanium (Grade 5, Grade 23)",
+  "Inconel",
+  "Kovar",
+  "Copper",
+  "Plastics (Delrin, PEEK, Ultem, etc.)"
+];
+
+// Industries served with specific examples
+const applications = [
+  {
+    industry: "Aerospace",
+    examples: [
+      "Structural components",
+      "Avionics housings",
+      "Fuel system components",
+      "Landing gear parts"
+    ]
+  },
+  {
+    industry: "Medical Devices",
+    examples: [
+      "Surgical instruments",
+      "Implant components",
+      "Diagnostic equipment parts",
+      "Medical device housings"
+    ]
+  },
+  {
+    industry: "Semiconductor",
+    examples: [
+      "Vacuum chamber components",
+      "Wafer handling equipment",
+      "Test fixtures",
+      "Clean room equipment parts"
+    ]
+  }
+];
+---
+
+<MainLayout title={pageTitle} description={pageDescription}>
+  <!-- Page Header -->
+  <div class="bg-blue-700 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16 md:py-24">
+      <div class="max-w-3xl">
+        <h1 class="text-3xl md:text-4xl font-bold mb-4">Precision Machining Services</h1>
+        <p class="text-xl text-blue-100">
+          Our high-precision machining services deliver exceptional components for the most demanding applications in aerospace, medical devices, and semiconductor industries.
+        </p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Main Content -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+      <!-- Main Content Area -->
+      <div class="lg:col-span-2">
+        <!-- Overview Section -->
+        <section class="mb-16">
+          <h2 class="text-2xl font-bold text-gray-900 mb-6">Precision Machining Excellence</h2>
+          <div class="prose prose-blue max-w-none">
+            <p>
+              At Harley & Son, precision machining is at the core of our manufacturing expertise. With state-of-the-art CNC machining centers and highly skilled machinists, we deliver components that meet the most stringent specifications and tolerances.
+            </p>
+            <p>
+              Our machining capabilities span from prototype development to high-volume production, with a focus on consistent quality, tight tolerances, and on-time delivery. We specialize in complex, high-precision parts that require advanced tooling and sophisticated machining strategies.
+            </p>
+            <p>
+              By leveraging the latest CAD/CAM software and multi-axis CNC technology, we can efficiently produce components with intricate geometries and precise dimensional requirements. Our AS9100D and ISO 9001:2015 certifications ensure that every part meets rigorous quality standards.
+            </p>
+          </div>
+          
+          <!-- Featured Image -->
+          <div class="mt-8 rounded-lg overflow-hidden shadow-lg">
+            <img 
+              src="/images/services/precision-machining-bay.jpg" 
+              alt="Harley & Son Precision Machining Facility" 
+              class="w-full h-auto"
+            />
+          </div>
+        </section>
+        
+        <!-- Equipment & Capabilities -->
+        <section class="mb-16">
+          <h2 class="text-2xl font-bold text-gray-900 mb-6">Equipment & Capabilities</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+            {equipment.map((item) => (
+              <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">{item.name}</h3>
+                <p class="text-gray-600 mb-3">{item.description}</p>
+                <div class="bg-gray-50 p-3 rounded">
+                  <p class="text-sm font-medium text-gray-700">Capabilities:</p>
+                  <p class="text-sm text-gray-600">{item.capabilities}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          <div class="prose prose-blue max-w-none">
+            <p>
+              Our machining department is equipped with advanced measurement and inspection equipment, including CMMs (Coordinate Measuring Machines) and optical comparators, ensuring that all parts meet or exceed specifications.
+            </p>
+            <p>
+              We continually invest in new equipment and technology to enhance our capabilities and maintain our position at the forefront of precision manufacturing.
+            </p>
+          </div>
+        </section>
+        
+        <!-- Materials Section -->
+        <section class="mb-16">
+          <h2 class="text-2xl font-bold text-gray-900 mb-6">Materials We Machine</h2>
+          <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {materials.map((material) => (
+                <div class="flex items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class="text-gray-700">{material}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <p class="mt-4 text-gray-600">
+            We also work with specialty alloys and materials per customer specifications. Contact us to discuss your specific material requirements.
+          </p>
+        </section>
+        
+        <!-- Applications By Industry -->
+        <section class="mb-16">
+          <h2 class="text-2xl font-bold text-gray-900 mb-6">Applications By Industry</h2>
+          <div class="space-y-8">
+            {applications.map((app) => (
+              <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">{app.industry}</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {app.examples.map((example) => (
+                    <div class="flex items-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span class="text-gray-700">{example}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+        
+        <!-- Quality Assurance -->
+        <section class="mb-16">
+          <h2 class="text-2xl font-bold text-gray-900 mb-6">Quality Assurance</h2>
+          <div class="prose prose-blue max-w-none">
+            <p>
+              Quality is built into every step of our machining process. Our AS9100D and ISO 9001:2015 certifications demonstrate our commitment to maintaining the highest standards in aerospace and general manufacturing.
+            </p>
+            <p>
+              Each machined component undergoes rigorous inspection using state-of-the-art measurement equipment, including:
+            </p>
+            <ul>
+              <li>Coordinate Measuring Machines (CMMs) for automated precision measurement</li>
+              <li>Optical comparators for profile verification</li>
+              <li>Surface roughness testers for finish validation</li>
+              <li>Hardness testers for material verification</li>
+            </ul>
+            <p>
+              We provide comprehensive inspection reports with each order, ensuring that all parts meet or exceed your specifications and requirements.
+            </p>
+          </div>
+        </section>
+      </div>
+      
+      <!-- Sidebar -->
+      <div class="lg:col-span-1">
+        <!-- Quick Contact Form -->
+        <div class="bg-gray-50 rounded-lg p-6 shadow-sm mb-8 sticky top-24">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">Request a Quote</h3>
+          <form class="space-y-4" action="/api/quote-request" method="POST">
+            <input type="hidden" name="service" value="Precision Machining" />
+            
+            <div>
+              <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name*</label>
+              <input 
+                type="text" 
+                id="name" 
+                name="name" 
+                class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                required
+              />
+            </div>
+            
+            <div>
+              <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email*</label>
+              <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                required
+              />
+            </div>
+            
+            <div>
+              <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+              <input 
+                type="tel" 
+                id="phone" 
+                name="phone" 
+                class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+              />
+            </div>
+            
+            <div>
+              <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Project Details</label>
+              <textarea 
+                id="message" 
+                name="message" 
+                rows="4" 
+                class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+              ></textarea>
+            </div>
+            
+            <button 
+              type="submit" 
+              class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            >
+              Request Quote
+            </button>
+          </form>
+        </div>
+        
+        <!-- Certifications -->
+        <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm mb-8">
+          <h3 class="text-lg font-bold text-gray-900 mb-4">Our Certifications</h3>
+          <div class="space-y-4">
+            <div class="flex items-center">
+              <img src="/images/as9100-badge.svg" alt="AS9100D Certified" class="h-12 w-auto mr-4" />
+              <div>
+                <h4 class="font-medium text-gray
